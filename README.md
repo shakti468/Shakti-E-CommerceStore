@@ -31,6 +31,27 @@ This project demonstrates the deployment of a full-stack E-Commerce application 
 ├── order-service/               # Order microservice
 └── README.md
 ```
+# 🐳 Dockerfile Templates
+## Backend 
+```bash
+FROM node:18
+WORKDIR /app
+COPY . .
+RUN npm install
+EXPOSE 3001
+CMD ["npm", "start"]
+```
+## Frontend
+```bash
+FROM node:18
+WORKDIR /app
+COPY . .
+RUN npm install
+RUN npm run build
+EXPOSE 3000
+CMD ["npx", "serve", "-s", "build"]
+```
+
 # 🚀 Deployment Steps
 ## Step 1: Push Docker Images
 ```bash
